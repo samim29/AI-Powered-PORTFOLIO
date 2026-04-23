@@ -1,112 +1,263 @@
-# AI-Powered Developer Portfolio
+# Sk Samim Ali — Portfolio (MERN Stack)
 
-This is the official repository for my personal developer portfolio, a modern, interactive, and responsive single-page application designed to showcase my skills, projects, and experience. The standout feature is a personalized AI assistant that can answer visitor questions in real-time.
+A dark, brutalist, editorial-style portfolio built with MongoDB, Express.js, React.js, and Node.js.
 
-**Live Demo URL:** https://meetsamim.netlify.app/
+## ✨ Features
 
----
-
-## 🌟 Key Features
-
-* **Interactive AI Chatbot:** Built with the **Google Generative AI API** and powered by **Netlify Serverless Functions**. The chatbot is trained on my personal and professional data to answer questions about my skills, projects, and background.
-* **Seamless Contact Form:** A fully functional contact form integrated with **EmailJS**, allowing visitors to send messages directly to my inbox without needing a backend server.
-* **Modern & Responsive Design:** Developed with **React** and styled with **Tailwind CSS** for a clean, mobile-first design that looks great on all devices.
-* **Dynamic UI:** Features smooth animations and micro-interactions using **Framer Motion** to enhance the user experience.
-* **Serverless Architecture:** The entire application is built without a traditional backend server, relying on serverless functions and third-party APIs for its dynamic capabilities.
-
----
-
-## 🛠️ Tech Stack & Tools
-
-* **Frontend:**
-    * [React](https://reactjs.org/)
-    * [Vite](https://vitejs.dev/)
-    * [JavaScript (ES6+)](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
-    * [Tailwind CSS](https://tailwindcss.com/)
-    * [Framer Motion](https://www.framer.com/motion/)
-* **Backend (Serverless):**
-    * [Netlify Serverless Functions](https://www.netlify.com/products/functions/)
-* **APIs & Services:**
-    * [Google Generative AI API](https://ai.google.dev/)
-    * [EmailJS](https://www.emailjs.com/)
-* **Deployment & Hosting:**
-    * [Netlify](https://www.netlify.com/)
-    * [Git & GitHub](https://github.com/)
+- **Multi-page React app** — Home, About, Projects, Contact, Admin
+- **Rule-based Chatbot** — Instant responses, no API needed, works offline
+- **Admin Panel** — Password-protected, secret URL only you know
+- **Project Cards** — Upload photo, title, description, GitHub, Live URL, Video URL
+- **Cloudinary image uploads** — Images stored in the cloud
+- **Framer Motion animations** — Smooth transitions and micro-interactions
+- **Custom cursor** — Orange dot + ring cursor with hover effects
+- **Dark brutalist design** — Bebas Neue + DM Sans, orange accent, noise texture
 
 ---
 
-## 🏗️ Architecture Overview
-
-This project utilizes a **serverless architecture**, which is a modern approach to building web applications without managing traditional servers.
-
-1.  The **frontend** is a static site built with React and Vite. It is served globally via Netlify's CDN for fast loading times.
-2.  When a user interacts with the AI chatbot, the React application makes an API call to a **Netlify Serverless Function**.
-3.  This serverless function, running on Node.js in the background, securely calls the **Google Generative AI API** with the user's prompt and my professional data.
-4.  The AI's response is streamed back through the function to the React frontend and displayed to the user.
-5.  The contact form works similarly by calling the **EmailJS API** directly from the client-side, eliminating the need for a backend mail server.
-
----
-
-## 🚀 Getting Started: Local Setup
-
-To run this project on your local machine, follow these steps:
+## 🚀 Getting Started
 
 ### Prerequisites
-
-* Node.js (v18 or later)
-* npm or yarn
-* A code editor (e.g., VS Code)
-
-### Installation
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
-    cd your-repository-name
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Set up environment variables:**
-    Create a new file named `.env` in the root of your project and add your Google AI API key:
-    ```
-    VITE_GOOGLE_API_KEY=your_google_ai_api_key_here
-    ```
-    *Note: The `VITE_` prefix is necessary for Vite to expose the variable to the frontend.*
-
-4.  **Run the development server:**
-    This project uses the Netlify CLI to run the Vite dev server and the serverless functions together.
-    ```bash
-    npm install -g netlify-cli
-    netlify dev
-    ```
-    Your application should now be running at `http://localhost:8888`.
+- Node.js v18+
+- MongoDB (local or Atlas)
+- Cloudinary account (free tier is fine)
 
 ---
 
-## ☁️ Deployment
+### 1. Enter the project
 
-This project is configured for easy deployment on **Netlify**.
-
-1.  **Push your code** to a GitHub repository.
-2.  **Connect your GitHub repository** to your Netlify account.
-3.  **Configure the build settings:**
-    * **Build command:** `npm run build`
-    * **Publish directory:** `dist`
-4.  **Add your environment variable** in the Netlify UI under **Site settings > Build & deploy > Environment**:
-    * **Key:** `GOOGLE_API_KEY`
-    * **Value:** `your_google_ai_api_key_here`
-    *(Note: For the serverless function, the key should not have the `VITE_` prefix).*
-
-Netlify will automatically build and deploy your site and serverless function whenever you push new changes to your main branch.
+```bash
+cd samim-portfolio/portfolio
+```
 
 ---
 
-## 📫 Contact
+### 2. Set up environment files
 
-Sk Samim Ali – samimalisk000@gmail.com
+**Backend** — create `backend/.env` (copy from `backend/.env.example`):
+```
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/portfolio
+JWT_SECRET=any_random_long_string_here
+ADMIN_PASSWORD=your_chosen_password
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+CLIENT_URL=http://localhost:5173
+```
 
-Project Link: [(https://github.com/samim29/AI-Powered-PORTFOLIO/tree/main)]
+**Frontend** — create `frontend/.env`:
+```
+VITE_API_URL=http://localhost:5000
+```
+
+> ⚠️ Never commit `.env` files to GitHub — they are already in `.gitignore`
+
+---
+
+### 3. Get Cloudinary credentials (free)
+
+1. Sign up at https://cloudinary.com
+2. Go to Dashboard → copy Cloud Name, API Key, API Secret
+3. Paste into `backend/.env`
+
+---
+
+### 4. Install dependencies
+
+```bash
+# From root portfolio/ folder
+
+# Install backend dependencies
+cd backend && npm install && cd ..
+
+# Install frontend dependencies
+cd frontend && npm install && cd ..
+```
+
+---
+
+### 5. Run the app locally
+
+Open **2 terminals**:
+
+```bash
+# Terminal 1 — Backend
+cd backend
+npm run dev
+# Runs on http://localhost:5000
+
+# Terminal 2 — Frontend
+cd frontend
+npm run dev
+# Runs on http://localhost:5173
+```
+
+---
+
+### 6. Access your portfolio
+
+| URL | Purpose |
+|-----|---------|
+| `http://localhost:5173` | Portfolio (public) |
+| `http://localhost:5173/login` | Admin panel — secret URL, don't share! |
+| `http://localhost:5000/api/health` | Backend health check |
+
+**Admin password** = whatever you set as `ADMIN_PASSWORD` in `backend/.env`
+
+> 🔒 The admin login is intentionally hidden — no link on the site. Only you know the URL.
+
+---
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── .gitignore
+├── package.json
+│
+├── backend/
+│   ├── middleware/
+│   │   ├── auth.js               # JWT protect middleware
+│   │   └── cloudinary.js         # Multer + Cloudinary storage
+│   ├── models/
+│   │   └── Project.js            # MongoDB schema
+│   ├── routes/
+│   │   ├── auth.js               # Login + JWT verify
+│   │   └── projects.js           # CRUD + image upload
+│   ├── server.js                 # Express entry point
+│   ├── .env                      # Your secrets (create this, never commit)
+│   └── .env.example              # Template
+│
+└── frontend/
+    ├── .env                      # Frontend env (create this, never commit)
+    └── src/
+        ├── components/
+        │   ├── admin/
+        │   │   └── ProjectForm.jsx   # Add/edit project modal (admin only)
+        │   ├── chatbot/
+        │   │   └── Chatbot.jsx       # Rule-based chatbot (no API needed)
+        │   ├── common/
+        │   │   ├── Cursor.jsx        # Custom animated cursor
+        │   │   └── Navbar.jsx        # Navigation bar
+        │   └── sections/
+        │       ├── Hero.jsx          # Landing hero section
+        │       ├── ProjectCard.jsx   # Project card component
+        │       └── Skills.jsx        # Skills grid section
+        ├── context/
+        │   └── AuthContext.jsx       # Admin auth state
+        ├── pages/
+        │   ├── About.jsx             # About page with timeline
+        │   ├── Admin.jsx             # Admin dashboard
+        │   ├── Contact.jsx           # Contact form
+        │   ├── Home.jsx              # Home page
+        │   ├── Login.jsx             # Admin login (secret URL)
+        │   ├── ProjectDetail.jsx     # Single project view
+        │   └── Projects.jsx          # All projects with filters
+        ├── App.jsx
+        ├── index.css
+        └── main.jsx
+```
+
+---
+
+## 🎨 Design System
+
+| Token | Value |
+|-------|-------|
+| Background | `#0a0a0f` (ink) |
+| Text | `#f5f0e8` (paper) |
+| Accent | `#ff4d00` (orange-red) |
+| Admin | `#00ff88` (electric green) |
+| Display font | Bebas Neue |
+| Body font | DM Sans |
+| Mono font | JetBrains Mono |
+
+---
+
+## 🤖 Chatbot
+
+The chatbot is **fully rule-based** — no API, no rate limits, no cost, works offline.
+
+It understands questions about:
+- Samim's background, education, CGPA
+- Projects (Wanderlust, Conversa, Lung Cancer Prediction)
+- Skills and tech stack
+- Achievements and certifications
+- Contact info
+- Navigation commands ("take me to projects", "go to contact")
+
+To add more responses, edit the `rules` array in `frontend/src/components/chatbot/Chatbot.jsx`.
+
+---
+
+## 🔒 Admin Panel
+
+Access at `/login` — **secret URL, no link on the public site**.
+
+**Features:**
+- View all projects in a dashboard table
+- Add new project with image upload, tech stack tags, GitHub/Live/Video URLs
+- Edit existing projects
+- Toggle featured status (featured projects appear on Home page)
+- Set display order
+- Delete projects (also removes image from Cloudinary)
+
+**Admin password** is set in `backend/.env` as `ADMIN_PASSWORD`.
+
+---
+
+## 🚢 Deployment
+
+### Frontend → Netlify (recommended, free)
+
+1. Push project to GitHub
+2. Connect repo to Netlify
+3. Set build settings:
+   - Base directory: `frontend`
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+4. No environment variables needed for frontend (chatbot has no API)
+5. Deploy!
+
+### Backend → Render (free tier)
+
+1. Create new Web Service at https://render.com
+2. Point to the `backend/` folder
+3. Add all `backend/.env` variables in Render dashboard:
+   - `MONGO_URI`, `JWT_SECRET`, `ADMIN_PASSWORD`
+   - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
+   - `CLIENT_URL` = your Netlify site URL
+4. Deploy
+
+### Database → MongoDB Atlas (free)
+
+1. Create free cluster at https://cloud.mongodb.com
+2. Get connection string
+3. Replace `MONGO_URI` in backend env variables
+
+### Images → Cloudinary (free)
+
+Free tier: 25GB storage — more than enough for a portfolio.
+
+---
+
+## 📧 Contact Form
+
+Opens the user's email client via `mailto:` — no backend needed.
+
+---
+
+## ⚠️ Common Issues
+
+| Problem | Fix |
+|---------|-----|
+| `/api/projects` 500 error | Check MongoDB is running and `backend/.env` exists |
+| Admin login fails | Check `ADMIN_PASSWORD` in `backend/.env` |
+| Images not uploading | Check Cloudinary credentials in `backend/.env` |
+| Page not found on refresh (Netlify) | Add `_redirects` file in `frontend/public`: `/* /index.html 200` |
+| CORS error | Check `CLIENT_URL` in `backend/.env` matches your frontend URL |
+
+---
+
+Built with ❤️ by Sk Samim Ali.

@@ -1,2 +1,35 @@
-# Local Netlify folder
-.netlify
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment files — NEVER commit these
+.env
+**/.env
+.env.local
+.env.production
+.env.development
+
+# Build output
+dist/
+build/
+**/dist/
+**/build/
+
+# Netlify local cache
+.netlify/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/
+
+# Package lock (optional — remove this line if you want to commit it)
+# package-lock.json

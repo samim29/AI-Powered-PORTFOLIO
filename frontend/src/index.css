@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "DM Sans", sans-serif;
+    background-color: #0a0a0f;
+    color: #f5f0e8;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  ::selection {
+    background: #ff4d00;
+    color: #f5f0e8;
+  }
+}
+
+@layer components {
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: #ff4d00;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-ring {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(255, 77, 0, 0.5);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.12s ease;
+    mix-blend-mode: difference;
+  }
+
+  .noise-bg::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  .section-title {
+    @apply font-display text-6xl md:text-8xl text-paper/10 select-none uppercase tracking-widest;
+  }
+
+  .tag-pill {
+    @apply text-xs font-mono px-3 py-1 rounded-full border border-paper/20 text-paper/60 bg-paper/5 hover:border-accent/50 hover:text-accent transition-colors duration-300;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-accent text-paper font-body font-medium rounded-full hover:bg-accent/80 transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border border-paper/30 text-paper font-body font-medium rounded-full hover:border-accent hover:text-accent transition-all duration-300;
+  }
+
+  .glass-card {
+    @apply bg-paper/5 backdrop-blur-sm border border-paper/10 rounded-2xl;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff4d00;
+  border-radius: 2px;
+}
+
+/* Page transition */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
