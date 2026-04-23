@@ -9,6 +9,7 @@ import { ArrowRight, Award, Github, Linkedin } from "lucide-react";
 
 const achievements = [
   { icon: "🏅", title: "Chancellor's Medal", sub: "Jewel of Jewels — College Topper" },
+  { icon: "🏅", title: "Achieved 2nd Position at the 16th Inter-University Engineering, Science & Technology Academic Meet 2026 organized by FOSET", sub: "CampusNest+ — a Hybrid ML-Based Recommendation System for Paying Guest Accommodation Paper Presentation." },
   { icon: "💻", title: "Top 25 Contributor", sub: "Apertre 2.0 Open-Source" },
   { icon: "🐙", title: "Hacktoberfest", sub: "Open Source Contributor" },
   { icon: "☁️", title: "AWS Academy Graduate", sub: "Cloud Foundations" },

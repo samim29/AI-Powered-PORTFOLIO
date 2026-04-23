@@ -14,7 +14,7 @@ const rules = [
   },
   {
     patterns: ["project", "what has he built", "what did he build", "work"],
-    reply: "Samim has built: 1) Wanderlust — a full-stack travel stay platform (MERN), 2) Conversa — an AI chatbot web app (MERN), and 3) Lung Cancer Prediction — an ML research project currently under review. 🚀",
+    reply: "Samim has built: 1) Wanderlust — a full-stack travel stay platform (MERN), 2) Conversa — an AI chatbot web app (MERN), and 3) CampusNest+ — a Hybrid ML-Based Recommendation System for Paying Guest Accommodation — an ML research project currently under review. 🚀",
     nav: "/projects",
   },
   {
@@ -26,8 +26,8 @@ const rules = [
     reply: "Conversa is an AI chatbot web app built with the MERN stack (MongoDB, Express, React, Node.js). It integrates a third-party AI API and stores full chat history in MongoDB. 💬",
   },
   {
-    patterns: ["lung cancer", "research", "ml project"],
-    reply: "Samim worked on a Lung Cancer Prediction research project under faculty guidance. It focused on ML model evaluation, error analysis, and real-world prediction reliability. It's currently under review. 🔬",
+    patterns: ["campusnest", "hybrid ml", "pg recommendation"],
+    reply: "Samim worked on CampusNest+ — a Hybrid ML-Based Recommendation System for Paying Guest Accommodation. It combines Matrix Factorization and LightGBM to improve the PG hunting experience for students. It's currently under review. 🔬",
   },
   {
     patterns: ["skill", "technology", "tech stack", "what can he do", "knows"],

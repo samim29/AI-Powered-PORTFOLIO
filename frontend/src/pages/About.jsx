@@ -20,14 +20,14 @@ const timeline = [
   },
   {
     year: "2022",
-    title: "B.Tech CS (AI & ML) — Started",
+    title: "B.Tech CSE (AI & ML) — Started",
     org: "Techno Engineering College Banipur",
     detail: "Began the journey into AI and software engineering",
     icon: Code2,
     color: "text-accent",
   },
   {
-    year: "2023",
+    year: "2025",
     title: "Wanderlust — Full-stack Platform",
     org: "Personal Project",
     detail: "Built a full rental property listing app with MERN-adjacent stack",
@@ -35,7 +35,7 @@ const timeline = [
     color: "text-green-400",
   },
   {
-    year: "2024",
+    year: "2025",
     title: "Chancellor's Medal — College Topper",
     org: "Techno India University Convocation",
     detail: "Awarded Jewel of Jewels for academic excellence",
@@ -43,7 +43,7 @@ const timeline = [
     color: "text-yellow-400",
   },
   {
-    year: "2024",
+    year: "2025",
     title: "Conversa — AI Chatbot",
     org: "Personal Project",
     detail: "MERN stack chatbot with integrated third-party AI API",
@@ -52,15 +52,15 @@ const timeline = [
   },
   {
     year: "2025",
-    title: "Lung Cancer Prediction Research",
+    title: "CampusNest+ — a Hybrid ML-Based Recommendation System for Paying Guest Accommodation",
     org: "Under Faculty Guidance",
-    detail: "ML model evaluation and error analysis — under review",
+    detail: "combining Matrix Factorization and LightGBM to make PG hunting less of a nightmare for students. Out of 42 teams acheived 2nd position at the 16th Inter-University Engineering, Science & Technology Academic Meet 2026 organized by FOSET",
     icon: Microscope,
     color: "text-pink-400",
   },
   {
     year: "2026",
-    title: "B.Tech Graduation",
+    title: "B.Tech Graduation (July 2026 Expected)",
     org: "Techno Engineering College Banipur",
     detail: "Expected — CGPA 8.6",
     icon: GraduationCap,
@@ -134,7 +134,7 @@ export default function About() {
             },
             {
               title: "I explore AI & ML",
-              body: "My academic focus is on applied machine learning. I've worked on research involving lung cancer prediction models, and I'm certified in IBM AI fundamentals and AWS Cloud.",
+              body: "My academic focus is on applied machine learning. I've worked on research involving CampusNest+ — a Hybrid ML-Based Recommendation System for Paying Guest Accommodation, and I'm certified in IBM AI fundamentals and AWS Cloud.",
               color: "border-purple-400/30",
             },
             {
