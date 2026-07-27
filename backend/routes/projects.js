@@ -1,6 +1,5 @@
 import express from "express";
 import Project from "../models/Project.js";
-import { protect } from "../middleware/auth.js";
 import { upload, cloudinary } from "../middleware/cloudinary.js";
 
 const router = express.Router();
@@ -71,7 +70,7 @@ router.put("/:id", upload.single("image"), async (req, res) => {
 });
 
 // Admin - delete project
-router.delete("/:id", protect, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     if (!project) return res.status(404).json({ message: "Not found" });

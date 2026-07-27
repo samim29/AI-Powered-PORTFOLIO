@@ -3,12 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Upload, Plus, Trash2 } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/AuthContext";
 
 const CATEGORIES = ["fullstack", "frontend", "backend", "ml", "other"];
 
 export default function ProjectForm({ project, onClose, onSaved }) {
-  // const { getToken } = useAuth();
   const isEdit = !!project;
 
   const [form, setForm] = useState({
@@ -54,10 +52,9 @@ export default function ProjectForm({ project, onClose, onSaved }) {
 
   const removeTech = (t) => setTechStack(techStack.filter((x) => x !== t));
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const token = getToken();
     const base = import.meta.env.VITE_API_URL || "";
 
     try {
@@ -67,7 +64,6 @@ export default function ProjectForm({ project, onClose, onSaved }) {
       if (imageFile) fd.append("image", imageFile);
 
       const headers = {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data",
       };
 

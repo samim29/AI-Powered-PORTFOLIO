@@ -1,74 +1,60 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Plus, Edit2, Trash2, Star, StarOff, LogOut, Eye } from "lucide-react";
-import { useAuth } from "../context/AuthContext";
+import { Plus, Edit2, Trash2, Star, StarOff, Eye } from "lucide-react";
 import ProjectForm from "../components/admin/ProjectForm";
 
 export default function Admin() {
-  const { isAdmin, loading: authLoading, logout, getToken } = useAuth();
-  const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const [editProject, setEditProject] = useState(null);
 
-  useEffect(() => {
-    if (!authLoading && !isAdmin) navigate("/login");
-  }, [isAdmin, authLoading]);
-
   const fetchProjects = async () => {
-  setLoading(true);
-  try {
-    const base = import.meta.env.VITE_API_URL || "";
-    const res = await axios.get(`${base}/api/projects`);
-    setProjects(Array.isArray(res.data) ? res.data : []);
-  } catch {
-    toast.error("Failed to load projects");
-  } finally {
-    setLoading(false);
-  }
-};
-  useEffect(() => { fetchProjects(); }, []);
+    setLoading(true);
+    try {
+      const base = import.meta.env.VITE_API_URL || "";
+      const res = await axios.get(`${base}/api/projects`);
+      setProjects(Array.isArray(res.data) ? res.data : []);
+    } catch {
+      toast.error("Failed to load projects");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   const handleDelete = async (id) => {
-  if (!confirm("Delete this project? This cannot be undone.")) return;
-  try {
-    const base = import.meta.env.VITE_API_URL || "";
-    await axios.delete(`${base}/api/projects/${id}`, {
-      headers: { Authorization: `Bearer ${getToken()}` },
-    });
-    toast.success("Project deleted");
-    fetchProjects();
-  } catch {
-    toast.error("Delete failed");
-  }
-};
+    if (!confirm("Delete this project? This cannot be undone.")) return;
+    try {
+      const base = import.meta.env.VITE_API_URL || "";
+      await axios.delete(`${base}/api/projects/${id}`);
+      toast.success("Project deleted");
+      fetchProjects();
+    } catch {
+      toast.error("Delete failed");
+    }
+  };
 
   const handleToggleFeatured = async (project) => {
-  try {
-    const base = import.meta.env.VITE_API_URL || "";
-    const fd = new FormData();
-    fd.append("featured", !project.featured);
-    fd.append("title", project.title);
-    fd.append("shortDescription", project.shortDescription);
-    fd.append("techStack", JSON.stringify(project.techStack));
-    await axios.put(`${base}/api/projects/${project._id}`, fd, {
-      headers: { Authorization: `Bearer ${getToken()}` },
-    });
-    toast.success(project.featured ? "Removed from featured" : "Marked as featured!");
-    fetchProjects();
-  } catch {
-    toast.error("Update failed");
-  }
-};
-  if (authLoading) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-electric/30 border-t-electric rounded-full animate-spin" />
-    </div>
-  );
+    try {
+      const base = import.meta.env.VITE_API_URL || "";
+      const fd = new FormData();
+      fd.append("featured", !project.featured);
+      fd.append("title", project.title);
+      fd.append("shortDescription", project.shortDescription);
+      fd.append("techStack", JSON.stringify(project.techStack));
+      await axios.put(`${base}/api/projects/${project._id}`, fd);
+      toast.success(project.featured ? "Removed from featured" : "Marked as featured!");
+      fetchProjects();
+    } catch {
+      toast.error("Update failed");
+    }
+  };
 
   return (
     <div className="min-h-screen pt-28 pb-24 px-6 max-w-7xl mx-auto">
@@ -81,7 +67,7 @@ export default function Admin() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <span className="w-2 h-2 rounded-full bg-electric animate-pulse" />
-            <span className="font-mono text-xs text-electric">Admin Mode Active</span>
+            <span className="font-mono text-xs text-electric">Project Editor</span>
           </div>
           <h1 className="font-display text-5xl md:text-7xl text-paper">DASHBOARD</h1>
           <p className="font-mono text-sm text-paper/30 mt-2">{projects.length} projects in portfolio</p>
@@ -92,12 +78,6 @@ export default function Admin() {
             className="flex items-center gap-2 px-5 py-2.5 bg-electric/20 border border-electric/30 text-electric font-body font-medium rounded-xl hover:bg-electric/30 transition-all"
           >
             <Plus size={16} /> Add Project
-          </button>
-          <button
-            onClick={() => { logout(); navigate("/"); }}
-            className="flex items-center gap-2 px-4 py-2.5 border border-paper/20 text-paper/50 font-body text-sm rounded-xl hover:border-paper/40 hover:text-paper transition-all"
-          >
-            <LogOut size={14} /> Logout
           </button>
         </div>
       </motion.div>

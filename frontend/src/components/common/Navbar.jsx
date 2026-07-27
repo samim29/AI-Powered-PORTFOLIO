@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAuth } from "../../context/AuthContext";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -14,7 +13,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const { isAdmin, logout } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -55,16 +53,9 @@ export default function Navbar() {
               }`} />
             </Link>
           ))}
-          {isAdmin && (
-            <>
-              <Link to="/admin" className="font-mono text-xs text-electric border border-electric/30 px-3 py-1.5 rounded-full hover:bg-electric/10 transition-colors">
-                Admin
-              </Link>
-              <button onClick={logout} className="font-mono text-xs text-paper/40 hover:text-paper/70 transition-colors">
-                logout
-              </button>
-            </>
-          )}
+          <Link to="/admin" className="font-mono text-xs text-electric border border-electric/30 px-3 py-1.5 rounded-full hover:bg-electric/10 transition-colors">
+            Admin
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -97,9 +88,7 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              {isAdmin && (
-                <Link to="/admin" className="font-mono text-sm text-electric">Admin Panel</Link>
-              )}
+              <Link to="/admin" className="font-mono text-sm text-electric">Admin Panel</Link>
             </div>
           </motion.div>
         )}
