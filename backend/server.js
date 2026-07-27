@@ -9,18 +9,28 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = (process.env.CLIENT_URL || "")
+const allowedOrigins = (process.env.CLIENT_URLS || process.env.CLIENT_URL || "")
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
+
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+
+  if (allowedOrigins.includes(origin)) return true;
+
+  if (/^https?:\/\/localhost(:\d+)?$/i.test(origin)) return true;
+
+  if (/^https:\/\/.+\.netlify\.app$/i.test(origin)) return true;
+
+  return false;
+};
 
 app.use(
   cors({
     origin: (origin, callback) => {
       // Allow non-browser tools and same-origin server-to-server requests.
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
+      if (isAllowedOrigin(origin)) {
         return callback(null, true);
       }
 
