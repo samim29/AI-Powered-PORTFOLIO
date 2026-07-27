@@ -8,7 +8,7 @@ import { useAuth } from "../../context/AuthContext";
 const CATEGORIES = ["fullstack", "frontend", "backend", "ml", "other"];
 
 export default function ProjectForm({ project, onClose, onSaved }) {
-  const { getToken } = useAuth();
+  // const { getToken } = useAuth();
   const isEdit = !!project;
 
   const [form, setForm] = useState({
