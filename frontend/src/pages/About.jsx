@@ -26,14 +26,7 @@ const timeline = [
     icon: Code2,
     color: "text-accent",
   },
-  {
-    year: "2025",
-    title: "Wanderlust — Full-stack Platform",
-    org: "Personal Project",
-    detail: "Built a full rental property listing app with MERN-adjacent stack",
-    icon: Code2,
-    color: "text-green-400",
-  },
+  
   {
     year: "2025",
     title: "Chancellor's Medal — College Topper",
@@ -42,22 +35,7 @@ const timeline = [
     icon: Trophy,
     color: "text-yellow-400",
   },
-  {
-    year: "2025",
-    title: "Conversa — AI Chatbot",
-    org: "Personal Project",
-    detail: "MERN stack chatbot with integrated third-party AI API",
-    icon: Code2,
-    color: "text-cyan-400",
-  },
-  {
-    year: "2025",
-    title: "CampusNest+ — a Hybrid ML-Based Recommendation System for Paying Guest Accommodation",
-    org: "Under Faculty Guidance",
-    detail: "combining Matrix Factorization and LightGBM to make PG hunting less of a nightmare for students. Out of 42 teams acheived 2nd position at the 16th Inter-University Engineering, Science & Technology Academic Meet 2026 organized by FOSET",
-    icon: Microscope,
-    color: "text-pink-400",
-  },
+  
   {
     year: "2026",
     title: "B.Tech Graduation (July 2026 Expected)",
