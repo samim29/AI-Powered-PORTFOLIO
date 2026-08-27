@@ -85,7 +85,7 @@ export default function About() {
                 { label: "College", val: "Techno Engineering College Banipur" },
                 { label: "Degree", val: "B.Tech in CS (AI & ML)" },
                 { label: "CGPA", val: "8.68 / 10" },
-                { label: "Graduation", val: "2026 },
+                { label: "Graduation", val: "2026" },
                 { label: "Email", val: "samimalisk000@gmail.com" },
               ].map(({ label, val }) => (
                 <div key={label} className="flex items-start gap-4 py-3 border-b border-paper/10 last:border-0">
