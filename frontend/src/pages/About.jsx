@@ -38,9 +38,9 @@ const timeline = [
   
   {
     year: "2026",
-    title: "B.Tech Graduation (July 2026 Expected)",
+    title: "B.Tech Graduation (July 2026)",
     org: "Techno Engineering College Banipur",
-    detail: "Expected — CGPA 8.6",
+    detail: "CGPA 8.68",
     icon: GraduationCap,
     color: "text-electric",
   },
@@ -60,7 +60,7 @@ export default function About() {
         <h1 className="font-display text-7xl md:text-[10vw] leading-none text-paper mb-6">ABOUT ME</h1>
         <div className="max-w-2xl">
           <p className="font-body text-lg text-paper/60 leading-relaxed">
-            I'm Sk Samim Ali — a Computer Science undergraduate specializing in AI & ML,
+            I'm Sk Samim Ali.I have completed my Bachelor of Technology in Computer Science with a specialization in Artificial Intelligence and Machine Learning,
             building things at the intersection of software and intelligence.
             I care deeply about clean code, real-world impact, and shipping products that work.
           </p>
@@ -84,8 +84,8 @@ export default function About() {
                 { label: "Location", val: "West Bengal, India" },
                 { label: "College", val: "Techno Engineering College Banipur" },
                 { label: "Degree", val: "B.Tech in CS (AI & ML)" },
-                { label: "CGPA", val: "8.6 / 10" },
-                { label: "Graduation", val: "2026 (Expected)" },
+                { label: "CGPA", val: "8.68 / 10" },
+                { label: "Graduation", val: "2026 },
                 { label: "Email", val: "samimalisk000@gmail.com" },
               ].map(({ label, val }) => (
                 <div key={label} className="flex items-start gap-4 py-3 border-b border-paper/10 last:border-0">
