@@ -120,7 +120,7 @@ export default function Hero() {
           transition={{ delay: 0.9 }}
           className="mt-8 max-w-md font-body text-paper/50 leading-relaxed"
         >
-          CS (AI & ML) undergraduate at Techno Engineering College Banipur.
+          CSE(AI & ML) undergraduate from Techno Engineering College Banipur.
           CGPA 8.6. Chancellor's Medal recipient. Building software that solves real problems.
         </motion.p>
 
