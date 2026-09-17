@@ -10,24 +10,12 @@ const rules = [
   },
   {
     patterns: ["who is samim", "about samim", "tell me about", "introduce samim"],
-    reply: "Sk Samim Ali is a CS (AI & ML) undergraduate at Techno Engineering College Banipur (2022–2026) with a CGPA of 8.6. He's a full-stack developer, Chancellor's Medal recipient, and open-source contributor. 🏅",
+    reply: "Sk Samim Ali is a CS (AI & ML) undergraduate at Techno Engineering College Banipur (2022–2026) with a CGPA of 8.68. He's a full-stack developer, Chancellor's Medal recipient, and open-source contributor. 🏅",
   },
   {
     patterns: ["project", "what has he built", "what did he build", "work"],
-    reply: "Samim has built: 1) Wanderlust — a full-stack travel stay platform (MERN), 2) Conversa — an AI chatbot web app (MERN), and 3) CampusNest+ — a Hybrid ML-Based Recommendation System for Paying Guest Accommodation — an ML research project currently under review. 🚀",
+    reply: "Samim has built:1) CodeRabbit - AI based resume reviewer and 2) StayFInder - A MERN based student accomodation finding platform 🚀",
     nav: "/projects",
-  },
-  {
-    patterns: ["wanderlust"],
-    reply: "Wanderlust is a full-stack travel stay platform for listing and booking rental properties. Built with MongoDB, Node.js, Express.js, and EJS. Features user auth, image upload, and reviews. 🌍",
-  },
-  {
-    patterns: ["conversa", "chatbot project"],
-    reply: "Conversa is an AI chatbot web app built with the MERN stack (MongoDB, Express, React, Node.js). It integrates a third-party AI API and stores full chat history in MongoDB. 💬",
-  },
-  {
-    patterns: ["campusnest", "hybrid ml", "pg recommendation"],
-    reply: "Samim worked on CampusNest+ — a Hybrid ML-Based Recommendation System for Paying Guest Accommodation. It combines Matrix Factorization and LightGBM to improve the PG hunting experience for students. It's currently under review. 🔬",
   },
   {
     patterns: ["skill", "technology", "tech stack", "what can he do", "knows"],
