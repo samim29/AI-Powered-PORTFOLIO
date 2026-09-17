@@ -1,6 +1,7 @@
 import express from "express";
 import Project from "../models/Project.js";
 import { upload, cloudinary } from "../middleware/cloudinary.js";
+import { protect } from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -26,7 +27,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Admin - create project with image upload
-router.post("/", upload.single("image"), async (req, res) => {
+router.post("/", protect, upload.single("image"), async (req, res) => {
   try {
     const data = {
       ...req.body,
@@ -44,7 +45,7 @@ router.post("/", upload.single("image"), async (req, res) => {
 });
 
 // Admin - update project
-router.put("/:id", upload.single("image"), async (req, res) => {
+router.put("/:id", protect, upload.single("image"), async (req, res) => {
   try {
     const existing = await Project.findById(req.params.id);
     if (!existing) return res.status(404).json({ message: "Not found" });
@@ -70,7 +71,7 @@ router.put("/:id", upload.single("image"), async (req, res) => {
 });
 
 // Admin - delete project
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", protect, async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     if (!project) return res.status(404).json({ message: "Not found" });

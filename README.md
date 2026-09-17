@@ -225,7 +225,7 @@ Access at `/login` — **secret URL, no link on the public site**.
 1. Create new Web Service at https://render.com
 2. Point to the `backend/` folder
 3. Add all `backend/.env` variables in Render dashboard:
-   - `MONGO_URI`, `JWT_SECRET`
+   - `MONGO_URI`, `JWT_SECRET`,`ADMIN_PASSWORD`
    - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
    - `CLIENT_URL` = your Netlify site URL
 4. Deploy

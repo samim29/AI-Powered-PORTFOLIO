@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Upload, Plus, Trash2 } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 
 const CATEGORIES = ["fullstack", "frontend", "backend", "ml", "other"];
 
 export default function ProjectForm({ project, onClose, onSaved }) {
   const isEdit = !!project;
+  const { getToken } = useAuth();
 
   const [form, setForm] = useState({
     title: "",
@@ -65,6 +67,7 @@ export default function ProjectForm({ project, onClose, onSaved }) {
 
       const headers = {
         "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${getToken()}`,
       };
 
       if (isEdit) {

@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
+import { useAuth } from "./context/AuthContext";
 import Navbar from "./components/common/Navbar";
 import Cursor from "./components/common/Cursor";
 import Chatbot from "./components/chatbot/Chatbot";
@@ -11,6 +12,13 @@ import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
+
+function ProtectedRoute({ children }) {
+  const { isAdmin, loading } = useAuth();
+
+  if (loading) return null;
+  return isAdmin ? children : <Navigate to="/login" replace />;
+}
 
 export default function App() {
   return (
@@ -37,7 +45,7 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>

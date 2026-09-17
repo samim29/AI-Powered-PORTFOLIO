@@ -53,7 +53,7 @@ export default function Navbar() {
               }`} />
             </Link>
           ))}
-          <Link to="/admin" className="font-mono text-xs text-electric border border-electric/30 px-3 py-1.5 rounded-full hover:bg-electric/10 transition-colors">
+          <Link to="/login" className="font-mono text-xs text-electric border border-electric/30 px-3 py-1.5 rounded-full hover:bg-electric/10 transition-colors">
             Admin
           </Link>
         </div>
@@ -88,7 +88,7 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link to="/admin" className="font-mono text-sm text-electric">Admin Panel</Link>
+              <Link to="/login" className="font-mono text-sm text-electric">Admin Panel</Link>
             </div>
           </motion.div>
         )}
